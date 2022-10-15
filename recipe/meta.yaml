@@ -1,4 +1,4 @@
-{% set version = "0.0.6" %}
+{% set version = "0.0.7" %}
 
 package:
   name: nanobind
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 99bb2d39e19ba856a23587f9a44e283199225fab42dac49c92c4fa8ee61ee596
+  sha256: 65e8305a9f1e291b9ac1ce3129828737c486f24aefeb1e220e5e252062c56709
 
 build:
   noarch: python
@@ -26,13 +26,11 @@ test:
     - pip
   commands:
     - pip check
-    - python -c "import nanobind; import os; 
-      assert os.path.isdir(nanobind.cmake_dir()) and 
-      os.path.isdir(nanobind.include_dir())"
+    - python -c "import nanobind; import os; assert os.path.isdir(nanobind.cmake_dir()) and os.path.isdir(nanobind.include_dir())"
 
 about:
   home: https://github.com/wjakob/nanobind
-  summary: 'Seamless operability between C++17 and Python'
+  summary: Seamless operability between C++17 and Python
   description: |
     nanobind is a small binding library that exposes C++ types in Python and
     vice versa. It is reminiscent of Boost.Python and pybind11 and uses
