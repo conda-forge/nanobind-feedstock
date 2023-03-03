@@ -1,4 +1,4 @@
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 {% set robin_map_commit = "68ff7325b3898fca267a103bad5c509e8861144d" %}
 
 package:
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 6ed2502bec1e771eb0eedb3986e1d4eefd98f76067640a80b9484b4c7e843b69
+  sha256: 953ee4ef11f8e3f0bb37538e26c64666b658de364592be6fae8fd2e7953a3d7c
 
 build:
   noarch: python
   script: git clone https://github.com/Tessil/robin-map.git ext/robin_map && git -C ext/robin_map checkout {{ robin_map_commit }} && {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
