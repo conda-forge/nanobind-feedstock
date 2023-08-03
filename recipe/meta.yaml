@@ -11,10 +11,17 @@ source:
 
 build:
   noarch: python
-  script: git clone https://github.com/Tessil/robin-map.git ext/robin_map && git -C ext/robin_map checkout {{ robin_map_commit }} && {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script:
+    - git clone https://github.com/Tessil/robin-map.git ext/robin_map && git -C ext/robin_map checkout {{ robin_map_commit }} && {{ PYTHON }} -m pip install . -vv
+    - cmake -S . -Bbuild -DNB_TEST_SHARED_BUILD=1 && cmake --build build -- nanobind && cp build/tests/libnanobind.so $PREFIX/lib
+  number: 1
 
 requirements:
+  build:
+    - cmake
+    - make
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - python >=3.8
     - pip

@@ -2,5 +2,14 @@ github:
   branch_name: main
   tooling_branch_name: main
 conda_forge_output_validation: true
+uild_platform:
+  osx_arm64: osx_64
+test: native_and_emulated
+provider:
+  linux_aarch64: default
+os_version:
+  linux_64: cos7
+azure:
+  store_build_artifacts: true
 conda_build:
   pkg_format: '2'
