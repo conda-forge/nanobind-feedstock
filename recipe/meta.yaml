@@ -1,6 +1,8 @@
 {% set version = "1.4.0" %}
 {% set robin_map_commit = "68ff7325b3898fca267a103bad5c509e8861144d" %}
 
+# [python_impl == "pypy"]
+
 package:
   name: nanobind
   version: {{ version }}
@@ -26,7 +28,6 @@ requirements:
     - {{ compiler('cxx') }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
   host:
     - python >=3.8
     - pip
