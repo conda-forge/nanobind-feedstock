@@ -18,6 +18,8 @@ cxx_compiler_version:
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
+python_impl:
+- cpython
 target_platform:
 - linux-aarch64
 zip_keys:
