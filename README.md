@@ -1,7 +1,7 @@
 About nanobind-feedstock
 ========================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nanobind-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nb_mw-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/wjakob/nanobind
 
@@ -24,8 +24,8 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main">
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nb_mw-feedstock?branchName=main">
       </a>
     </td>
   </tr>
