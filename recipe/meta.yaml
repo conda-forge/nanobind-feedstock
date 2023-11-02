@@ -1,4 +1,4 @@
-{% set version = "1.7.0" %}
+{% set version = "1.8.0" %}
 {% set robin_map_commit = "68ff7325b3898fca267a103bad5c509e8861144d" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a7e24ca6389eb888fd0631c76ad4516cb3e75dc54ff39a05f6aec7f128330cb8
+  sha256: dbaa13c2935041aabe3396b8c67f1fbe870f26dee2ea8ebeeb23b2970f5f25ba
 
 build:
   noarch: python
