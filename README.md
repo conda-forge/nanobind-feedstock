@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nanobind-feedst
 
 Home: https://github.com/wjakob/nanobind
 
-Package license: BSD-3-Clause
+Package license: BSD-3-Clause AND MIT
 
 Summary: Seamless operability between C++17 and Python
 
