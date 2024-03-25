@@ -6,13 +6,16 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 149a3da40b0a988513d8cf5e71db3037373823505a3c92f87b988c92d7e0ab34
+  - url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: 149a3da40b0a988513d8cf5e71db3037373823505a3c92f87b988c92d7e0ab34
+  - url: https://github.com/Tessil/robin-map/archive/{{ robin_map_commit }}.tar.gz
+    sha256: 98e79b94950cbf6c645205d07c4752daa4926ecff5a0cf914c134ba59b9b1c29
+    folder: ext/robin_map
 
 build:
   noarch: python
-  script: git clone https://github.com/Tessil/robin-map.git ext/robin_map && git -C ext/robin_map checkout {{ robin_map_commit }} && {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
 
 requirements:
   host:
@@ -39,9 +42,10 @@ about:
     near-identical syntax. In contrast to these existing tools, nanobind is
     more efficient: bindings compile in a shorter amount of time, producing
     smaller binaries with better runtime performance.
-  license: BSD-3-Clause
-  license_family: BSD
-  license_file: LICENSE
+  license: BSD-3-Clause AND MIT
+  license_file:
+    - LICENSE
+    - ext/robin_map/LICENSE
   dev_url: https://github.com/wjakob/nanobind
 
 extra:
