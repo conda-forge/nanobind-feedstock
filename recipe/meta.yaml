@@ -1,4 +1,4 @@
-{% set version = "1.9.2" %}
+{% set version = "1.9.2.dev129.g03ebcb8" %}  # This is the git describe output.
 {% set robin_map_commit = "68ff7325b3898fca267a103bad5c509e8861144d" %}
 
 package:
@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 149a3da40b0a988513d8cf5e71db3037373823505a3c92f87b988c92d7e0ab34
+  - url: https://github.com/wjakob/nanobind/archive/03ebcb883a8658706bada56e7bc11faf2e2b3f67.zip
+    sha256: cdadb150a0534582bc1760cd1ae2e9b99b8b3cbc09a1ef462d9aebd1070764c4
   - url: https://github.com/Tessil/robin-map/archive/{{ robin_map_commit }}.tar.gz
     sha256: 98e79b94950cbf6c645205d07c4752daa4926ecff5a0cf914c134ba59b9b1c29
     folder: ext/robin_map
@@ -15,7 +15,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
