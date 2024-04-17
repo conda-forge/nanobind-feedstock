@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nanobind-feedst
 
 Home: https://github.com/wjakob/nanobind
 
-Package license: BSD-3-Clause AND MIT
+Package license: BSD-3-Clause
 
 Summary: Seamless operability between C++17 and Python
 
@@ -41,14 +41,14 @@ Current release info
 Installing nanobind
 ===================
 
-Installing `nanobind` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `nanobind` from the `conda-forge/label/nanobind_dev` channel can be achieved by adding `conda-forge/label/nanobind_dev` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/nanobind_dev
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `nanobind` can be installed with `conda`:
+Once the `conda-forge/label/nanobind_dev` channel has been enabled, `nanobind` can be installed with `conda`:
 
 ```
 conda install nanobind
@@ -63,26 +63,26 @@ mamba install nanobind
 It is possible to list all of the versions of `nanobind` available on your platform with `conda`:
 
 ```
-conda search nanobind --channel conda-forge
+conda search nanobind --channel conda-forge/label/nanobind_dev
 ```
 
 or with `mamba`:
 
 ```
-mamba search nanobind --channel conda-forge
+mamba search nanobind --channel conda-forge/label/nanobind_dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search nanobind --channel conda-forge
+mamba repoquery search nanobind --channel conda-forge/label/nanobind_dev
 
 # List packages depending on `nanobind`:
-mamba repoquery whoneeds nanobind --channel conda-forge
+mamba repoquery whoneeds nanobind --channel conda-forge/label/nanobind_dev
 
 # List dependencies of `nanobind`:
-mamba repoquery depends nanobind --channel conda-forge
+mamba repoquery depends nanobind --channel conda-forge/label/nanobind_dev
 ```
 
 
