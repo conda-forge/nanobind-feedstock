@@ -18,8 +18,11 @@ build:
   number: 0
 
 requirements:
-  host:
+  build:
     - python >=3.8
+    - scikit-build-core
+    - cmake
+    - make
     - pip
     - git
   run:
