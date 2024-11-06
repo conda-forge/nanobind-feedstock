@@ -37,6 +37,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nanobind-green.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nanobind--abi-green.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) |
 
 Installing nanobind
 ===================
@@ -48,16 +49,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `nanobind` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `nanobind, nanobind-abi` can be installed with `conda`:
 
 ```
-conda install nanobind
+conda install nanobind nanobind-abi
 ```
 
 or with `mamba`:
 
 ```
-mamba install nanobind
+mamba install nanobind nanobind-abi
 ```
 
 It is possible to list all of the versions of `nanobind` available on your platform with `conda`:
