@@ -1,8 +1,9 @@
 {% set version = "2.2.0" %}
 {% set robin_map_commit = "188c45569cc2a5dd768077c193830b51d33a5020" %}
+{% set abi_version = 15 %}
 
 package:
-  name: nanobind
+  name: nanobind-split
   version: {{ version }}
 
 source:
@@ -13,28 +14,46 @@ source:
     folder: ext/robin_map
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
-requirements:
-  host:
-    - python >=3.8
-    - scikit-build-core
-    - cmake
-    - make
-    - pip
-    - git
-  run:
-    - python >=3.8
+outputs:
+  - name: nanobind-abi
+    version: {{ abi_version }}
+    build:
+      noarch: generic
+      run_exports:
+        - nanobind-abi =={{ abi_version }}
+    test:
+      source_files:
+        - src/nb_internals.cpp
+      commands:
+        # make sure the internals version matches the package version
+        - if [ $(grep "define NB_INTERNALS_VERSION" src/nb_internals.cpp | grep -E -o '[0-9]+') != "{{ abi_version }}" ]; then exit 1; fi
 
-test:
-  requires:
-    - python >=3.8
-    - pip
-  commands:
-    - pip check
-    - python -c "import nanobind; import os; assert os.path.isdir(nanobind.cmake_dir()) and os.path.isdir(nanobind.include_dir())"
+  - name: nanobind
+    build:
+      noarch: python
+      script: $PYTHON -m pip install . -vv
+    
+    requirements:
+      host:
+        - python >=3.8
+        - scikit-build-core
+        - cmake
+        - make
+        - pip
+        - git
+      run:
+        - python >=3.8
+      run_constrained:
+        - nanobind-abi =={{ abi_version }}
+    test:
+      requires:
+        - python >=3.8
+        - pip
+      commands:
+        - pip check
+        - python -c "import nanobind; import os; assert os.path.isdir(nanobind.cmake_dir()) and os.path.isdir(nanobind.include_dir())"
 
 about:
   home: https://github.com/wjakob/nanobind
@@ -52,6 +71,7 @@ about:
   dev_url: https://github.com/wjakob/nanobind
 
 extra:
+  feedstock-name: nanobind
   recipe-maintainers:
     - MatthiasKohl
     - wjakob
