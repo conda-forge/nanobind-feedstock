@@ -1,6 +1,6 @@
 {% set version = "2.8.0" %}
 {% set robin_map_commit = "188c45569cc2a5dd768077c193830b51d33a5020" %}
-{% set abi_version = 15 %}
+{% set abi_version = 16 %}
 
 package:
   name: nanobind-split
@@ -14,7 +14,7 @@ source:
     folder: ext/robin_map
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: nanobind-abi
@@ -25,10 +25,10 @@ outputs:
         - nanobind-abi =={{ abi_version }}
     test:
       source_files:
-        - src/nb_internals.cpp
+        - src/nb_abi.h
       commands:
         # make sure the internals version matches the package version
-        - if [ $(grep "define NB_INTERNALS_VERSION" src/nb_internals.cpp | grep -E -o '[0-9]+') != "{{ abi_version }}" ]; then exit 1; fi
+        - if [[ $(grep "define NB_INTERNALS_VERSION" src/nb_abi.h | grep -E -o '[0-9]+') != "{{ abi_version }}" ]]; then exit 1; fi
 
   - name: nanobind
     build:
