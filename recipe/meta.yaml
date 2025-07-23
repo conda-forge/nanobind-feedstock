@@ -19,6 +19,10 @@ build:
 outputs:
   - name: nanobind-abi
     version: {{ abi_version }}
+    requirements:
+      run_constrained:
+        # conflict with nanobind releases before the nanobind-abi package was added
+        - nanobind >=2.4
     build:
       noarch: generic
       run_exports:
