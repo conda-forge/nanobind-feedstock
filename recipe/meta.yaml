@@ -1,4 +1,4 @@
-{% set version = "2.9.2" %}
+{% set version = "2.10.0" %}
 {% set robin_map_commit = "188c45569cc2a5dd768077c193830b51d33a5020" %}
 {% set abi_version = 16 %}
 
@@ -8,13 +8,13 @@ package:
 
 source:
   - url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 8ce3667dce3e64fc06bfb9b778b6f48731482362fb89a43da156632266cd5a90
+    sha256: 338832c62492c8927a8d2cb6babd26c01ddf81aee2f0a1b77f5339d79defefd4
   - url: https://github.com/Tessil/robin-map/archive/{{ robin_map_commit }}.tar.gz
     sha256: 2f4be670fa4f53c3261ed7af392b414a00e75591f87da0a8dd525de376430747
     folder: ext/robin_map
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: nanobind-abi
