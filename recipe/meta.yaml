@@ -1,5 +1,5 @@
 {% set version = "2.15.0" %}
-{% set robin_map_commit = "188c45569cc2a5dd768077c193830b51d33a5020" %}
+{% set robin_map_version = "1.4.0" %}
 {% set abi_version = 21 %}
 
 package:
@@ -9,8 +9,8 @@ package:
 source:
   - url: https://github.com/wjakob/nanobind/archive/refs/tags/v{{ version }}.tar.gz
     sha256: 36c8760b3acb25643cd89d549782d8c67bd82ce54c6238608787c22a34fd490f
-  - url: https://github.com/Tessil/robin-map/archive/{{ robin_map_commit }}.tar.gz
-    sha256: 2f4be670fa4f53c3261ed7af392b414a00e75591f87da0a8dd525de376430747
+  - url: https://github.com/Tessil/robin-map/archive/refs/tags/v{{ robin_map_version }}.tar.gz
+    sha256: 7930dbf9634acfc02686d87f615c0f4f33135948130b8922331c16d90a03250c
     folder: ext/robin_map
 
 build:
