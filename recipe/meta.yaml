@@ -29,6 +29,7 @@ outputs:
         - nanobind-abi =={{ abi_version }}
     test:
       source_files:
+        # Nanobind 3.0 moved NB_INTERNALS_VERSION here and removed nb_abi.h.
         - src/nb_internals.h
       commands:
         # make sure the internals version matches the package version
