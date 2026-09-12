@@ -17,7 +17,6 @@ near-identical syntax. In contrast to these existing tools, nanobind is
 more efficient: bindings compile in a shorter amount of time, producing
 smaller binaries with better runtime performance.
 
-
 Current build status
 ====================
 
