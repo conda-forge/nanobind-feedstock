@@ -198,5 +198,6 @@ Feedstock Maintainers
 =====================
 
 * [@MatthiasKohl](https://github.com/MatthiasKohl/)
+* [@jeongseok-meta](https://github.com/jeongseok-meta/)
 * [@wjakob](https://github.com/wjakob/)
 
