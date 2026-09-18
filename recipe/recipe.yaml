@@ -1,0 +1,94 @@
+schema_version: 1
+
+context:
+  version: "3.0.1"
+  robin_map_version: "1.4.0"
+  abi_version: "22"
+
+recipe:
+  name: nanobind-split
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/wjakob/nanobind/archive/refs/tags/v${{ version }}.tar.gz
+    sha256: 34ded7cf2292f08a92c45490a095e76334a57751bbae03a8c83241803bf19623
+  - url: https://github.com/Tessil/robin-map/archive/refs/tags/v${{ robin_map_version }}.tar.gz
+    sha256: 7930dbf9634acfc02686d87f615c0f4f33135948130b8922331c16d90a03250c
+    target_directory: ext/robin_map
+
+build:
+  number: 1
+
+outputs:
+  - package:
+      name: nanobind-abi
+      version: ${{ abi_version }}
+    build:
+      noarch: generic
+    requirements:
+      run_exports:
+        - nanobind-abi ==${{ abi_version }}
+      run_constraints:
+        # conflict with nanobind releases before the nanobind-abi package was added
+        - nanobind >=2.4
+    tests:
+      - files:
+          source:
+            # Nanobind 3.0 moved NB_INTERNALS_VERSION here and removed nb_abi.h.
+            - src/nb_internals.h
+        script:
+          # make sure the internals version matches the package version
+          - if [[ $(grep "define NB_INTERNALS_VERSION" src/nb_internals.h | grep -E -o '[0-9]+') != "$PKG_VERSION" ]]; then exit 1; fi
+
+  - package:
+      name: nanobind
+      version: ${{ version }}
+    build:
+      noarch: python
+      script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      host:
+        - python ${{ python_min }}.*
+        - scikit-build-core
+        - cmake
+        - make
+        - pip
+        - git
+      run:
+        - python >=${{ python_min }}
+      run_constraints:
+        - nanobind-abi ==${{ abi_version }}
+    tests:
+      - python:
+          imports:
+            - nanobind
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
+      - script:
+          - python -c "import nanobind; import os; assert os.path.isdir(nanobind.cmake_dir()) and os.path.isdir(nanobind.include_dir())"
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
+about:
+  homepage: https://github.com/wjakob/nanobind
+  summary: Seamless operability between C++17 and Python
+  description: |
+    nanobind is a small binding library that exposes C++ types in Python and
+    vice versa. It is reminiscent of Boost.Python and pybind11 and uses
+    near-identical syntax. In contrast to these existing tools, nanobind is
+    more efficient: bindings compile in a shorter amount of time, producing
+    smaller binaries with better runtime performance.
+  license: BSD-3-Clause
+  license_file:
+    - LICENSE
+    - ext/robin_map/LICENSE
+  repository: https://github.com/wjakob/nanobind
+
+extra:
+  feedstock-name: nanobind
+  recipe-maintainers:
+    - MatthiasKohl
+    - wjakob
