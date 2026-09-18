@@ -90,5 +90,6 @@ about:
 extra:
   feedstock-name: nanobind
   recipe-maintainers:
+    - jeongseok-meta
     - MatthiasKohl
     - wjakob
