@@ -20,7 +20,8 @@ source:
     target_directory: ext/robin_map
 
 build:
-  number: 1
+  # bumped for the new nanobind-backend output; nanobind/nanobind-abi content is unchanged
+  number: 2
 
 outputs:
   - package:
