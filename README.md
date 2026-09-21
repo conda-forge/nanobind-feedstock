@@ -22,11 +22,57 @@ Current build status
 
 
 <table><tr>
-    <td>All platforms:</td>
+    <td>GitHub Actions</td>
     <td>
       <a href="https://github.com/conda-forge/nanobind-feedstock/actions/workflows/conda-build.yml">
         <img src="https://github.com/conda-forge/nanobind-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>osx_64_python3.11.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.14.____cp314</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17658&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nanobind-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.14.____cp314" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
     </td>
   </tr>
 </table>
@@ -38,6 +84,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nanobind-green.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nanobind.svg)](https://anaconda.org/conda-forge/nanobind) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nanobind--abi-green.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nanobind-abi.svg)](https://anaconda.org/conda-forge/nanobind-abi) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nanobind--backend-green.svg)](https://anaconda.org/conda-forge/nanobind-backend) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nanobind-backend.svg)](https://anaconda.org/conda-forge/nanobind-backend) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nanobind-backend.svg)](https://anaconda.org/conda-forge/nanobind-backend) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nanobind-backend.svg)](https://anaconda.org/conda-forge/nanobind-backend) |
 
 Installing nanobind
 ===================
@@ -56,7 +103,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install nanobind nanobind-abi
+conda install nanobind nanobind-abi nanobind-backend
 ```
 
 </details>
@@ -65,7 +112,7 @@ conda install nanobind nanobind-abi
 <summary>With mamba</summary>
 
 ```
-mamba install nanobind nanobind-abi
+mamba install nanobind nanobind-abi nanobind-backend
 ```
 
 </details>
@@ -75,9 +122,9 @@ mamba install nanobind nanobind-abi
 
 ```
 # for adding to your local project
-pixi add nanobind nanobind-abi
+pixi add nanobind nanobind-abi nanobind-backend
 # for installing globally
-pixi global install nanobind nanobind-abi
+pixi global install nanobind nanobind-abi nanobind-backend
 ```
 
 </details>
