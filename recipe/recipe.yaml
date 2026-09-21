@@ -92,10 +92,12 @@ outputs:
       version: ${{ backend_version }}
     build:
       script:
-        - cd nanobind-backend
-        # without this, scikit-build-core/CMake falls back to "Unix Makefiles" and can't find make
-        - export CMAKE_GENERATOR=Ninja
-        - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+        # without CMAKE_GENERATOR, scikit-build-core/CMake falls back to "Unix Makefiles" and can't find make
+        env:
+          CMAKE_GENERATOR: Ninja
+        content:
+          - cd nanobind-backend
+          - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       build:
         - ${{ compiler('c') }}
