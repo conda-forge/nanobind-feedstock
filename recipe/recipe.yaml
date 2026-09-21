@@ -4,6 +4,9 @@ context:
   version: "3.0.1"
   robin_map_version: "1.4.0"
   abi_version: "22"
+  # ABI_MAJOR.ABI_MINOR.REVISION from nanobind-backend/../include/nanobind/nb_backend.h,
+  # not the nanobind release version -- see nanobind-backend/pyproject.toml at this tag.
+  backend_version: "1.0.0"
 
 recipe:
   name: nanobind-split
@@ -71,6 +74,48 @@ outputs:
         requirements:
           run:
             - python ${{ python_min }}.*
+
+  # ---------------------------------------------------------------------
+  # Compiled backend for nanobind's split mode (nanobind_add_module(...
+  # BACKEND_MODULE nanobind_backend)): one binary per platform/Python
+  # version, imported transitively by extensions built that way so they
+  # don't each have to ship their own copy. Lives in nanobind-backend/
+  # inside the same source tree already fetched above; not a standalone
+  # sdist (see nanobind-backend/CMakeLists.txt's own NOT EXISTS NB_CONFIG
+  # guard) so it always builds from this same checkout.
+  # ---------------------------------------------------------------------
+  - package:
+      name: nanobind-backend
+      version: ${{ backend_version }}
+    build:
+      script:
+        - cd nanobind-backend
+        - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - cmake
+        - ninja
+        - if: build_platform != host_platform
+          then:
+            - python
+            - cross-python_${{ host_platform }}
+      host:
+        - python
+        - pip
+        - scikit-build-core
+      run:
+        - python
+    tests:
+      - python:
+          imports:
+            - nanobind_backend
+          pip_check: true
+      - script:
+          # matches upstream's own cibuildwheel test-command
+          - python -c "import nanobind_backend._nb_backend_v1"
 
 about:
   homepage: https://github.com/wjakob/nanobind
