@@ -20,8 +20,7 @@ source:
     target_directory: ext/robin_map
 
 build:
-  # bumped for the new nanobind-backend output; nanobind/nanobind-abi content is unchanged
-  number: 2
+  number: 1
 
 outputs:
   - package:
@@ -91,6 +90,8 @@ outputs:
     build:
       script:
         - cd nanobind-backend
+        # without this, scikit-build-core/CMake falls back to "Unix Makefiles" and can't find make
+        - export CMAKE_GENERATOR=Ninja
         - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       build:
