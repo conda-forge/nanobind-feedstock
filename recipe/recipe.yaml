@@ -4,6 +4,9 @@ context:
   version: "3.1.0"
   robin_map_version: "1.4.0"
   abi_version: "22"
+  build_number: 0
+  # Keep the unstable ABI flavor preferred for existing unqualified consumers.
+  abi_build_number: ${{ build_number + 100 if nanobind_abi_flavor == "unstable" else build_number }}
 
 recipe:
   name: nanobind-split
@@ -17,7 +20,7 @@ source:
     target_directory: ext/robin_map
 
 build:
-  number: 0
+  number: ${{ build_number }}
 
 outputs:
   - package:
@@ -25,9 +28,12 @@ outputs:
       version: ${{ abi_version }}
     build:
       noarch: generic
+      number: ${{ abi_build_number }}
+      string: ${{ nanobind_abi_flavor }}_${{ abi_build_number }}
     requirements:
       run_exports:
-        - nanobind-abi ==${{ abi_version }}
+        # Downstreams must select the flavor matching their Py_LIMITED_API build.
+        - nanobind-abi ==${{ abi_version }} ${{ nanobind_abi_flavor }}_*
       run_constraints:
         # conflict with nanobind releases before the nanobind-abi package was added
         - nanobind >=2.4
@@ -45,6 +51,8 @@ outputs:
       version: ${{ version }}
     build:
       noarch: python
+      # The nanobind headers are independent of the downstream ABI flavor.
+      skip: nanobind_abi_flavor == "stable"
       script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:

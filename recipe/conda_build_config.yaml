@@ -1,0 +1,5 @@
+# Nanobind calls non-Py_LIMITED_API builds "unstable"; this is unrelated to
+# CPython's Unstable C API.
+nanobind_abi_flavor:
+  - unstable
+  - stable
