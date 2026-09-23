@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "3.0.1"
+  version: "3.1.0"
   robin_map_version: "1.4.0"
   abi_version: "22"
 
@@ -11,13 +11,13 @@ recipe:
 
 source:
   - url: https://github.com/wjakob/nanobind/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 34ded7cf2292f08a92c45490a095e76334a57751bbae03a8c83241803bf19623
+    sha256: 39659890a112e84e7263e4a263c71dd2621f866f7a4386ce95ef410e6c0e5c2f
   - url: https://github.com/Tessil/robin-map/archive/refs/tags/v${{ robin_map_version }}.tar.gz
     sha256: 7930dbf9634acfc02686d87f615c0f4f33135948130b8922331c16d90a03250c
     target_directory: ext/robin_map
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - package:
